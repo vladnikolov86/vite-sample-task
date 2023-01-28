@@ -3,6 +3,7 @@ import { useFetchItem } from "~/services/useFetchItem";
 
 import * as Styles from './ItemView.styles'
 import Loader from "~/components/common/loader/Loader";
+import Header from "~/components/common/header/Header";
 
 export default function ItemView() {
     const { id } = useParams();
@@ -41,10 +42,13 @@ export default function ItemView() {
 
     console.log(item)
     return <Styles.Wrapper>
-        {renderImage()}
-        <Styles.BottomWrap>
-            {renderInfoItems()}
-            {renderNearbyPlaces()}
-        </Styles.BottomWrap>
+        <Header />
+        <Styles.InnerWrap>
+            {renderImage()}
+            <Styles.BottomWrap>
+                {renderInfoItems()}
+                {renderNearbyPlaces()}
+            </Styles.BottomWrap>
+        </Styles.InnerWrap>
     </Styles.Wrapper>
 }

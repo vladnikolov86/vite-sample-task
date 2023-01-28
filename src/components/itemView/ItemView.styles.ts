@@ -6,8 +6,16 @@ export const Wrapper = styled.div`
   width: 100%;
   height: 100%;
   box-sizing: border-box;
-  padding: ${({ theme: { spacings } }) => spacings.large};
-  padding-bottom: ${({ theme: { spacings } }) => spacings.medum};
+`;
+
+export const InnerWrap = styled.div`
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    padding: ${({ theme: { spacings } }) => spacings.large};
+   padding-bottom: ${({ theme: { spacings } }) => spacings.medum};
 `;
 
 export const Image = styled.img`

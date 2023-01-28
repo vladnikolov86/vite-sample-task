@@ -9,12 +9,6 @@ export const Wrap = styled.header`
     gap: ${({ theme: { spacings } }) => spacings.small};
     font-size: ${({ theme: { fonts } }) => fonts.header};
     user-select: none;
-`
-
-export const Link = styled.a`
-    text-decoration: none;
-    color: initial;
-    :hover{
-        color: initial;
-    }
+    cursor: pointer;
+    background:  ${({ theme: { colors } }) => colors.white};
 `

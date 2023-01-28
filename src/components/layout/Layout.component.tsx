@@ -6,7 +6,7 @@ import Header from "~/components/common/header/Header";
 
 export default function Layout() {
     return <Styles.Wrapper>
-        <Header />
+       
         <Styles.Layout>
             <RouterProvider router={router} />
         </Styles.Layout>

@@ -3,6 +3,7 @@ import GridWrapListView from "~/components/listView/gridWrap/GridWrapListView.co
 import { useFetchList } from "~/services/useFetchList";
 import * as Styles from './ListView.style';
 import Loader from "~/components/common/loader/Loader";
+import Header from "~/components/common/header/Header";
 export default function ListView() {
 
     const { data } = useFetchList();
@@ -21,6 +22,7 @@ export default function ListView() {
         secondColumnName
     }
     return <Styles.Wrap>
+         <Header />
         <GridWrapListView gridData={gridWrapProps} />
     </Styles.Wrap>
 
