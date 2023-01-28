@@ -10,3 +10,11 @@ export const Wrap = styled.header`
     font-size: ${({ theme: { fonts } }) => fonts.header};
     user-select: none;
 `
+
+export const Link = styled.a`
+    text-decoration: none;
+    color: initial;
+    :hover{
+        color: initial;
+    }
+`

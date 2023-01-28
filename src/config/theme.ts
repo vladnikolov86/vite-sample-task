@@ -8,11 +8,12 @@ export const BaseTheme: DefaultTheme = {
         white: '#fff'
     },
     fonts: {
-        header: '1.2rem',
+        header: '1.1rem',
         bigHeader: '1.5rem'
     },
     spacings:{
         small: '3px',
-        medium: '15px'
+        medium: '15px',
+        large: '40px'
     }
 }

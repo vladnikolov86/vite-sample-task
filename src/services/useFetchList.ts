@@ -7,7 +7,7 @@ export function useFetchList(): UseQueryResult<IBusinessItemModel[]> {
     return useQuery([BusinessQueryGeneral], () => {
         return fetch(MAIN_URL).then(async (resp) => {
             const data = await resp.json();
-            //Just generate some more data to demonstrate scroller
+            //Just generate some more data to demonstrate virtual scroller
             return [...data, ...data, ...data]
         }).catch((err) => {
             console.error(err)

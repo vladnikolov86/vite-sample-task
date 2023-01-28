@@ -4,12 +4,12 @@ import { Cell } from "~/components/common/grid/Grid.styles";
 
 export const HeaderCell = styled(Cell)`
     color: ${({ theme: { colors } }) => colors.purple};
-    font-size:  ${({ theme: { fonts } }) => fonts.header};
     font-weight: 600;
     align-items: center;
     min-height: 50px;
     margin-bottom: 10px;
     cursor: initial;
+    text-transform: uppercase;
 `
 
 export const Wrap = styled.div`
