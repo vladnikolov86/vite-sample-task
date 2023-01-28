@@ -2,12 +2,13 @@ import { useParams } from "react-router-dom";
 import { useFetchItem } from "~/services/useFetchItem";
 
 import * as Styles from './ItemView.styles'
+import Loader from "~/components/common/loader/Loader";
 
 export default function ItemView() {
     const { id } = useParams();
     const item = useFetchItem(id as string);
     if (!item) {
-        return null;
+        return <Styles.Wrapper><Loader /></Styles.Wrapper>;
     }
 
     const renderImage = () => {
@@ -15,12 +16,27 @@ export default function ItemView() {
     }
 
     const renderInfoItems = () => {
+        const { address: { number, city, street, zip } } = item;
+        const { phone, email } = item;
         return <Styles.InfoBoxesWrap>
             <Styles.InfoBox>
                 <Styles.InfoBoxHeader>Address</Styles.InfoBoxHeader>
-                <div>{item.address.number} {item.address.street}</div>
+                <Styles.InfoBoxItem title={`${number} ${street}`}>{number} {street}</Styles.InfoBoxItem>
+                <Styles.InfoBoxItem title={`${city} ${zip}`}>{city}, {zip}</Styles.InfoBoxItem>
+            </Styles.InfoBox>
+
+            <Styles.InfoBox>
+                <Styles.InfoBoxHeader>Contact</Styles.InfoBoxHeader>
+                <Styles.InfoBoxItem title={phone}>{phone}</Styles.InfoBoxItem>
+                <Styles.InfoBoxItem title={email}>{email}</Styles.InfoBoxItem>
             </Styles.InfoBox>
         </Styles.InfoBoxesWrap>
+    }
+
+    const renderNearbyPlaces = () => {
+        return <Styles.NearbyPlaces>
+            <Styles.InfoBoxHeader>Nearby Places</Styles.InfoBoxHeader>
+        </Styles.NearbyPlaces>
     }
 
     console.log(item)
@@ -28,6 +44,7 @@ export default function ItemView() {
         {renderImage()}
         <Styles.BottomWrap>
             {renderInfoItems()}
+            {renderNearbyPlaces()}
         </Styles.BottomWrap>
     </Styles.Wrapper>
 }
