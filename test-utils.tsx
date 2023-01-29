@@ -1,6 +1,9 @@
 
 import { render } from "@testing-library/react";
 import { QueryClient, QueryClientProvider } from "react-query";
+import { RouterProvider } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
+import { BaseTheme } from "~/config/theme";
 
 const renderWithMockProviders = (children: JSX.Element) => {
     const queryClient = new QueryClient({
@@ -11,7 +14,10 @@ const renderWithMockProviders = (children: JSX.Element) => {
         },
     });
     return <QueryClientProvider client={queryClient}>
-        {children}
+        <ThemeProvider theme={BaseTheme}>
+            {children}
+        </ThemeProvider>
+
     </QueryClientProvider>
 }
 

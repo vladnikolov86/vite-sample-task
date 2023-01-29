@@ -9,7 +9,6 @@ import Grid from "~/components/common/grid/Grid";
 import { CellModeEnum, IDataItem } from "~/components/common/grid/Grid.types";
 import { BaseTheme } from "~/config/theme";
 import { IBusinessItemModel } from "~/models/businessItem.model";
-import { useEffect, useState } from "react";
 
 const CELL_HEIGHT = 40;
 export default function ItemView() {
