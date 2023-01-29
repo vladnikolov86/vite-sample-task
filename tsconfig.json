@@ -26,9 +26,13 @@
     "noEmit": true,
     "jsx": "react-jsx"
   },
+  "types": ["node", "vite/client", "vitest/globals"],
   "include": [
     "src",
     "custom.d.ts"
+  ],
+  "exclude": [
+    "**/*.spec.ts"
   ],
   "references": [
     {
