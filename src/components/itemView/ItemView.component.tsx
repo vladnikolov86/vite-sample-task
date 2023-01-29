@@ -40,7 +40,6 @@ export default function ItemView() {
         </Styles.NearbyPlaces>
     }
 
-    console.log(item)
     return <Styles.Wrapper>
         <Header />
         <Styles.InnerWrap>

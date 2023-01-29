@@ -1,16 +1,22 @@
+import React, { Suspense } from "react";
 import { createBrowserRouter } from "react-router-dom";
-import ItemView from "~/components/itemView/ItemView.component";
-import ListView from "~/components/listView/ListView.component";
+import Loader from "~/components/common/loader/Loader";
 
+const ListView = React.lazy(() => import("~/components/listView/ListView.component"));
+const ItemView = React.lazy(() => import("~/components/itemView/ItemView.component"));
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <ListView />,
+    element: <Suspense fallback={<Loader />}>
+      <ListView />
+    </Suspense>
   },
   {
     path: '/:id',
-    element: <ItemView />,
+    element: <Suspense fallback={<Loader />}>
+      <ItemView />
+    </Suspense>
   }
 ]);
 

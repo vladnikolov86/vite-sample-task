@@ -47,6 +47,7 @@ export const InfoBoxHeader = styled.div`
     font-size: ${({ theme: { fonts } }) => fonts.header};
     margin-bottom: ${({ theme: { spacings } }) => spacings.medium};
     padding: ${({ theme: { spacings } }) => spacings.medium};
+    user-select: none;
 `
 
 export const InfoBoxItem = styled.div`
