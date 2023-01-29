@@ -2,7 +2,7 @@ import Grid from "~/components/common/grid/Grid";
 import { IGridWrapListViewProps } from "~/components/listView/gridWrap/GridWrapListView.types";
 import * as Styles from "./GridWrapListView.styles"
 export default function GridWrapListView(props: IGridWrapListViewProps) {
-    const { gridData: { data, firstColumnName, secondColumnName } } = props;
+    const { gridData: { data }, firstColumnName, secondColumnName } = props;
     return <Styles.Wrap>
         <Styles.HeaderCell>
             <span>{firstColumnName}</span>
@@ -10,8 +10,6 @@ export default function GridWrapListView(props: IGridWrapListViewProps) {
         </Styles.HeaderCell>
         <Grid
             data={data}
-            firstColumnName={firstColumnName}
-            secondColumnName={secondColumnName}
         />
     </Styles.Wrap>
 }

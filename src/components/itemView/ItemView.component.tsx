@@ -4,10 +4,16 @@ import { useFetchItem } from "~/services/useFetchItem";
 import * as Styles from './ItemView.styles'
 import Loader from "~/components/common/loader/Loader";
 import Header from "~/components/common/header/Header";
+import { useFetchNearbyPlaces } from "~/services/useFetchNearbyPlaces";
+import Grid from "~/components/common/grid/Grid";
+import { IDataItem } from "~/components/common/grid/Grid.types";
+import { BaseTheme } from "~/config/theme";
 
+const CELL_HEIGHT = 40;
 export default function ItemView() {
     const { id } = useParams();
     const item = useFetchItem(id as string);
+    const nearbyPlacesCollection = useFetchNearbyPlaces(item?.address.city || '', item?.id || '');
     if (!item) {
         return <Styles.Wrapper><Loader /></Styles.Wrapper>;
     }
@@ -34,9 +40,29 @@ export default function ItemView() {
         </Styles.InfoBoxesWrap>
     }
 
+    const handleTransformGridData = (): IDataItem[] => {
+        if (!nearbyPlacesCollection?.length) {
+            return [];
+        }
+        return nearbyPlacesCollection.map((place) => {
+            return {
+                firstColumn: place.name,
+                secondColumn: place.address.street,
+                id: place.id
+            }
+        })
+    }
+
     const renderNearbyPlaces = () => {
         return <Styles.NearbyPlaces>
             <Styles.InfoBoxHeader>Nearby Places</Styles.InfoBoxHeader>
+            <Styles.GridWrap>
+                <Grid
+                    backgroundColor={BaseTheme.colors.backgroundMain}
+                    cellHeight={CELL_HEIGHT}
+                    data={handleTransformGridData()}
+                />
+            </Styles.GridWrap>
         </Styles.NearbyPlaces>
     }
 

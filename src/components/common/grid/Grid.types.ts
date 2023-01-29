@@ -1,15 +1,15 @@
 import { CSSProperties } from "styled-components";
 
-interface IDataItem {
-    name: string;
-    description: string;
+export interface IDataItem {
+    firstColumn: string;
+    secondColumn: string;
     id: string;
 }
 
 export interface IGridProps {
-    firstColumnName: string;
-    secondColumnName: string;
     data: IDataItem[];
+    cellHeight?: number;
+    backgroundColor?: string;
 }
 
 export interface IRowRenderInput {

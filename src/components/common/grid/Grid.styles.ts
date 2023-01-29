@@ -5,10 +5,10 @@ export const Wrapper = styled.section`
     height: 100%;
 `;
 
-export const Cell = styled.div`
+export const Cell = styled.div < { backgroundColor?: string }> `
     display: grid;
     grid-template-columns: 30% 70%;
-    background-color: ${({ theme: { colors } }) => colors.white};
+    background-color: ${({ backgroundColor, theme: { colors }}) => backgroundColor || colors.white};
     align-items: center;
     padding-left: ${({ theme: { spacings } }) => spacings.medium};
     cursor: pointer;

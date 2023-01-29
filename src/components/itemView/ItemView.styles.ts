@@ -15,7 +15,7 @@ export const InnerWrap = styled.div`
     height: 100%;
     box-sizing: border-box;
     padding: ${({ theme: { spacings } }) => spacings.large};
-   padding-bottom: ${({ theme: { spacings } }) => spacings.medum};
+   padding-bottom: ${({ theme: { spacings } }) => spacings.medium};
 `;
 
 export const Image = styled.img`
@@ -60,5 +60,10 @@ export const InfoBoxItem = styled.div`
 export const NearbyPlaces = styled.div`
     background-color: ${({ theme: { colors } }) => colors.white};
     margin: ${({ theme: { spacings } }) => `0 ${spacings.large}`};
-    
+`
+
+export const GridWrap = styled.div`
+    width: 100%;
+    //Height of header for virtual scroll
+    height: calc(100% - 60px);
 `
