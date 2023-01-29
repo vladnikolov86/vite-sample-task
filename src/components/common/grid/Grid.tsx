@@ -1,4 +1,4 @@
-import { IGridProps, IRowRenderInput } from "~/components/common/grid/Grid.types";
+import { CellModeEnum, IGridProps, IRowRenderInput } from "~/components/common/grid/Grid.types";
 import * as Styles from './Grid.styles';
 import AutoSizer from 'react-virtualized/dist/commonjs/AutoSizer';
 import List from 'react-virtualized/dist/commonjs/List';
@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 const ROW_SPACING = 10;
 const CELL_HEIGHT_DEFAULT = 50;
 export default function Grid(props: IGridProps) {
-    const { data, cellHeight = CELL_HEIGHT_DEFAULT, backgroundColor } = props;
+    const { data, cellHeight = CELL_HEIGHT_DEFAULT, backgroundColor, cellMode = CellModeEnum.LARGE } = props;
     const navigate = useNavigate();
 
     const handleCellClick = (id: string) => {
@@ -20,6 +20,7 @@ export default function Grid(props: IGridProps) {
             <Styles.Cell
                 key={key}
                 backgroundColor={backgroundColor}
+                cellMode={cellMode}
                 style={{ ...style, height: cellHeight - ROW_SPACING }}
                 onClick={() => handleCellClick(row.id)}
             >

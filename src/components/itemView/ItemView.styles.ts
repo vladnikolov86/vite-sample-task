@@ -15,12 +15,13 @@ export const InnerWrap = styled.div`
     height: 100%;
     box-sizing: border-box;
     padding: ${({ theme: { spacings } }) => spacings.large};
-   padding-bottom: ${({ theme: { spacings } }) => spacings.medium};
+    padding-bottom: ${({ theme: { spacings } }) => spacings.medium};
 `;
 
 export const Image = styled.img`
     object-fit: cover;
     height: 200px;
+    width: 100%;
 `
 
 export const BottomWrap = styled.div`
@@ -45,12 +46,12 @@ export const InfoBox = styled.div`
 export const InfoBoxHeader = styled.div`
     font-weight: 500;
     font-size: ${({ theme: { fonts } }) => fonts.header};
-    margin-bottom: ${({ theme: { spacings } }) => spacings.medium};
     padding: ${({ theme: { spacings } }) => spacings.medium};
     user-select: none;
 `
 
 export const InfoBoxItem = styled.div`
+  font-size: ${({ theme: { fonts } }) => fonts.paragraph};
   padding-left: ${({ theme: { spacings } }) => spacings.medium};
   overflow: hidden;
   text-overflow: ellipsis;
@@ -63,7 +64,10 @@ export const NearbyPlaces = styled.div`
 `
 
 export const GridWrap = styled.div`
-    width: 100%;
+    width: ${({ theme: { spacings } }) => `calc(100% - ${Number.parseInt(spacings.medium) * 2}px)`};
     //Height of header for virtual scroll
     height: calc(100% - 60px);
+    margin: ${({ theme: { spacings } }) => spacings.medium};
+    margin-top: 0;
+    box-sizing: border-box;
 `

@@ -15,4 +15,7 @@ export default defineConfig({
   plugins: [react(), svgr(), checker({
     typescript: true,
   }),],
+  build: {
+    outDir: './server/dist'
+  }
 });

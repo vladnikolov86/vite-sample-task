@@ -6,12 +6,15 @@ import Loader from "~/components/common/loader/Loader";
 import Header from "~/components/common/header/Header";
 import { useFetchNearbyPlaces } from "~/services/useFetchNearbyPlaces";
 import Grid from "~/components/common/grid/Grid";
-import { IDataItem } from "~/components/common/grid/Grid.types";
+import { CellModeEnum, IDataItem } from "~/components/common/grid/Grid.types";
 import { BaseTheme } from "~/config/theme";
+import { IBusinessItemModel } from "~/models/businessItem.model";
+import { useEffect, useState } from "react";
 
 const CELL_HEIGHT = 40;
 export default function ItemView() {
     const { id } = useParams();
+
     const item = useFetchItem(id as string);
     const nearbyPlacesCollection = useFetchNearbyPlaces(item?.address.city || '', item?.id || '');
     if (!item) {
@@ -40,6 +43,11 @@ export default function ItemView() {
         </Styles.InfoBoxesWrap>
     }
 
+    const getFullAddress = (item: IBusinessItemModel) => {
+        const { address } = item;
+        return `${address.number} ${address.street},${address.country},${address.zip}`
+    }
+
     const handleTransformGridData = (): IDataItem[] => {
         if (!nearbyPlacesCollection?.length) {
             return [];
@@ -47,7 +55,7 @@ export default function ItemView() {
         return nearbyPlacesCollection.map((place) => {
             return {
                 firstColumn: place.name,
-                secondColumn: place.address.street,
+                secondColumn: getFullAddress(place),
                 id: place.id
             }
         })
@@ -60,6 +68,7 @@ export default function ItemView() {
                 <Grid
                     backgroundColor={BaseTheme.colors.backgroundMain}
                     cellHeight={CELL_HEIGHT}
+                    cellMode={CellModeEnum.MEDIUM}
                     data={handleTransformGridData()}
                 />
             </Styles.GridWrap>

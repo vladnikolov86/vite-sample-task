@@ -10,6 +10,7 @@ declare module 'styled-components' {
             white: string;
         },
         fonts: {
+            paragraph: string;
             header: string;
             bigHeader: string;
         },

@@ -1,5 +1,9 @@
 import { CSSProperties } from "styled-components";
 
+export enum CellModeEnum{
+    MEDIUM = 'medium',
+    LARGE = 'large'
+}
 export interface IDataItem {
     firstColumn: string;
     secondColumn: string;
@@ -8,6 +12,7 @@ export interface IDataItem {
 
 export interface IGridProps {
     data: IDataItem[];
+    cellMode?: CellModeEnum;
     cellHeight?: number;
     backgroundColor?: string;
 }

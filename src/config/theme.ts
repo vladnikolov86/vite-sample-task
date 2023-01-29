@@ -8,6 +8,7 @@ export const BaseTheme: DefaultTheme = {
         white: '#fff'
     },
     fonts: {
+        paragraph: '0.9rem',
         header: '1.1rem',
         bigHeader: '1.5rem'
     },
