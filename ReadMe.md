@@ -9,3 +9,4 @@ Option3: With docker (assuming you have it installed). Run `docker compose build
 
 ### Notes
 1. Added some mocking of the data to simulate a bit more items. That is why there is repetition for some the items.
+2. Tests are available with `yarn test`. They are added for one of the components.
