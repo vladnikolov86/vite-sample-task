@@ -21,23 +21,44 @@ export default function ItemView() {
     }
 
     const renderImage = () => {
-        return <Styles.Image src={item?.image} />
+        const metaText = 'Business Image';
+        return <Styles.Image alt={metaText} src={item?.image} />
     }
 
     const renderInfoItems = () => {
         const { address: { number, city, street, zip } } = item;
         const { phone, email } = item;
+        const addressLabel = 'Address';
+        const contactLabel = 'Contact';
+        const streetNumber = `${number} ${street}`;
+        const cityZip = `${city}, ${zip}`;
         return <Styles.InfoBoxesWrap>
             <Styles.InfoBox>
-                <Styles.InfoBoxHeader>Address</Styles.InfoBoxHeader>
-                <Styles.InfoBoxItem title={`${number} ${street}`}>{number} {street}</Styles.InfoBoxItem>
-                <Styles.InfoBoxItem title={`${city} ${zip}`}>{city}, {zip}</Styles.InfoBoxItem>
+                <Styles.InfoBoxHeader data-testid={addressLabel}>{addressLabel}</Styles.InfoBoxHeader>
+                <Styles.InfoBoxItem
+                    title={streetNumber}
+                    data-testid={`address-${streetNumber}`}
+                >
+                    {streetNumber}
+                </Styles.InfoBoxItem>
+                <Styles.InfoBoxItem
+                    data-testid={`address-cityZip`}
+                    title={cityZip}>{cityZip}
+                </Styles.InfoBoxItem>
             </Styles.InfoBox>
 
             <Styles.InfoBox>
-                <Styles.InfoBoxHeader>Contact</Styles.InfoBoxHeader>
-                <Styles.InfoBoxItem title={phone}>{phone}</Styles.InfoBoxItem>
-                <Styles.InfoBoxItem title={email}>{email}</Styles.InfoBoxItem>
+                <Styles.InfoBoxHeader data-testid={contactLabel}>{contactLabel}</Styles.InfoBoxHeader>
+                <Styles.InfoBoxItem
+                    data-testid={`contact-${phone}`}
+                    title={phone}>
+                    {phone}
+                </Styles.InfoBoxItem>
+                <Styles.InfoBoxItem
+                    data-testid={`contact-${email}`}
+                    title={email}>
+                    {email}
+                </Styles.InfoBoxItem>
             </Styles.InfoBox>
         </Styles.InfoBoxesWrap>
     }
@@ -61,8 +82,12 @@ export default function ItemView() {
     }
 
     const renderNearbyPlaces = () => {
+        const nearbyLabel = 'Nearby Places';
         return <Styles.NearbyPlaces>
-            <Styles.InfoBoxHeader>Nearby Places</Styles.InfoBoxHeader>
+            <Styles.InfoBoxHeader
+                data-testid={nearbyLabel}>
+                {nearbyLabel}
+            </Styles.InfoBoxHeader>
             <Styles.GridWrap>
                 <Grid
                     backgroundColor={BaseTheme.colors.backgroundMain}
